@@ -25,8 +25,8 @@ def email_alert(subject, body, to):
     server.quit()
 
 def submit():
-	print(radio_var.get())
-	email_alert("Front Desk Alert", "{} is here to see you!".format(name_var.get()), radio_var.get())
+	print(menu_var.get())
+	email_alert("Front Desk Alert", "{} is here to see you!".format(name_var.get()), menu_var.get())
 	name_var.set("")
 
 # initialization and styling
@@ -41,18 +41,18 @@ style.configure('TButton', font = ('calibri', 10, 'bold', 'underline'), foregrou
 
 # tkinter vars
 name_var = StringVar()
-radio_var = StringVar(root, "")
-radios = {"Spencer" : "spencer@beerfamily.us",
-        "Spencer via sms" : "3038566085@vtext.com",
-        "Maya" : "mayap116@gmail.com",
-        "Maya via sms" : "6506498277@txt.att.net"}
+clicked_name = StringVar()
+
+clicked_name.set("Spencer")
+
 
 
 name_label = Label(root, text = 'Please enter your name', font=('calibre',10, 'bold'))
 name_entry = Entry(root, textvariable = name_var, font=('calibre', 10, 'normal'))
-for (text, value) in radios.items():
-    Radiobutton(root, text = text, variable = radio_var,
-        value = value).pack()
+
+
+for (text, value) in email_dictionary.items():
+
 
 sub_btn = Button(root, text = 'Submit', image = logo_adjusted, compound = LEFT, style = 'TButton', command = submit)
 
